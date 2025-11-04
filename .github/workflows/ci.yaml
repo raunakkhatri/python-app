@@ -42,7 +42,7 @@ jobs:
         name: Argocd spp sync
         shell: bash
         run: |
-          argocd login argocd-dex-server.argocd \
+          argocd login argocd-server.argocd \
               --insecure \
               --grpc-web \
               --username admin \
