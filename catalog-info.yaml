@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: python-app
+  description: Python app to diplay the time and health
+  # Example for optional annotations
+  annotations:
+    github.com/project-slug: raunakkhatri/python-app
+spec:
+  type: service
+  owner: john@example.com
+  lifecycle: experimental
