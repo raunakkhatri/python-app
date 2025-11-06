@@ -8,5 +8,5 @@ metadata:
     github.com/project-slug: raunakkhatri/python-app
 spec:
   type: service
-  owner: john@example.com
+  owner: development
   lifecycle: experimental
