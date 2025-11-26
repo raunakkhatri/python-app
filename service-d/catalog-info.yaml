@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: service-c
-  description: Dummy Service c linked to central catalog
+  name: service-D
+  description: Dummy Service D linked to central catalog
   annotations:
     github.com/project-slug: raunakkhatri/python-app
     backstage.io/techdocs-ref: dir:.
