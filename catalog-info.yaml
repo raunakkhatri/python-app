@@ -1,13 +1,10 @@
 apiVersion: backstage.io/v1alpha1
-kind: Component
+kind: Location
 metadata:
-  name: python-app
-  description: Python app to diplay the time and health
-  # Example for optional annotations
-  annotations:
-    github.com/project-slug: raunakkhatri/python-app
-    backstage.io/techdocs-ref: dir:.
+  name: central-catalog
+  description: Central catalog referencing multiple services
 spec:
-  type: service
-  owner: development
-  lifecycle: experimental
+  type: url
+  targets:
+    - https://github.com/raunakkhatri/python-app/blob/main/service-a/catalog-info.yaml
+    - https://github.com/raunakkhatri/python-app/blob/main/service-b/catalog-info.yaml
