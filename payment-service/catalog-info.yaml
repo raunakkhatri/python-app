@@ -1,0 +1,86 @@
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: payments
+  description: Domain for payment-related services.
+spec:
+  owner: group:developer
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: payment-processing
+  description: Payment microservices running across multiple environments.
+spec:
+  owner: group:developer
+  domain: payments
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: payment-api
+  description: API definition for the Payment Service.
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:developer
+  definition:
+    $text: ./openapi.yaml
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: payment-db-us
+  description: Simulated DB for US environment.
+spec:
+  type: database
+  system: payment-processing
+  owner: group:developer
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: payment-db-eu
+  description: Simulated DB for EU environment.
+spec:
+  type: database
+  system: payment-processing
+  owner: group:developer
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: payment-db-asia
+  description: Simulated DB for Asia environment.
+spec:
+  type: database
+  system: payment-processing
+  owner: group:developer
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: payment-service
+  description: >
+    Payment service deployed locally in multiple namespaces 
+    (us-prod, eu-dev, asia-qa) with different versions.
+
+  annotations:
+    # Matches all your deployed services:
+    backstage.io/kubernetes-label-selector: app=payment-service
+
+    backstage.io/techdocs-ref: dir:./docs
+
+spec:
+  type: service
+  lifecycle: production
+  owner: group:developer
+  system: payment-processing
+
+  providesApis:
+    - api:default/payment-api
+
+  dependsOn:
+    - resource:default/payment-db-us
+    - resource:default/payment-db-eu
+    - resource:default/payment-db-asia
