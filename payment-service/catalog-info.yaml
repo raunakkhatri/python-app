@@ -13,7 +13,7 @@ metadata:
   description: Payment microservices running across multiple environments.
 spec:
   owner: group:developer
-  domain: payments
+  # domain: payments
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
@@ -64,13 +64,10 @@ metadata:
   description: >
     Payment service deployed locally in multiple namespaces 
     (us-prod, eu-dev, asia-qa) with different versions.
-
   annotations:
     # Matches all your deployed services:
     backstage.io/kubernetes-label-selector: app=payment-service
-
     backstage.io/techdocs-ref: dir:./docs
-
 spec:
   type: service
   lifecycle: production
@@ -78,9 +75,9 @@ spec:
   system: payment-processing
 
   providesApis:
-    - api:default/payment-api
+    - payment-api
 
   dependsOn:
-    - resource:default/payment-db-us
-    - resource:default/payment-db-eu
-    - resource:default/payment-db-asia
+    - resource:payment-db-us
+    - resource:payment-db-eu
+    - resource:payment-db-asia
