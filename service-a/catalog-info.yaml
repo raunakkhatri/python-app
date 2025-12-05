@@ -1,19 +1,19 @@
-# apiVersion: backstage.io/v1alpha1
-# kind: Domain
-# metadata:
-#   name: serviceA
-#   description: Domain for serviceA-related services.
-# spec:
-#   owner: group:developer
-# ---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: dataprocessing
+  description: Domain for data-processing services.
+spec:
+  owner: group:developer
+---
 apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
-  name: data-processing
+  name: service-a
   description: data-processing microservices running across multiple environments.
 spec:
   owner: group:developer
-  # domain: serviceA
+  domain: dataprocessing
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
