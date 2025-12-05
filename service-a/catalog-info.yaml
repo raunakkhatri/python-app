@@ -13,7 +13,7 @@ metadata:
   description: data-processing microservices running across multiple environments.
 spec:
   owner: group:developer
-  domain: dataprocessing
+  domain: data-processing
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
