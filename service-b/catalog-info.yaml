@@ -1,12 +1,86 @@
+# apiVersion: backstage.io/v1alpha1
+# kind: Domain
+# metadata:
+#   name: serviceB
+#   description: Domain for serviceB-related services.
+# spec:
+#   owner: group:developer
+# ---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: data-processing
+  description: data-processing microservices running across multiple environments.
+spec:
+  owner: group:developer
+  # domain: serviceB
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: serviceB-api
+  description: API definition for the serviceB Service.
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:developer
+  definition:
+    $text: ./openapi.yaml
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: serviceB-db-us
+  description: Simulated DB for US environment.
+spec:
+  type: database
+  system: serviceB-processing
+  owner: group:developer
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: serviceB-db-eu
+  description: Simulated DB for EU environment.
+spec:
+  type: database
+  system: serviceB-processing
+  owner: group:developer
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: serviceB-db-asia
+  description: Simulated DB for Asia environment.
+spec:
+  type: database
+  system: serviceB-processing
+  owner: group:developer
+---
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: service-b
-  description: Dummy Service B linked to central catalog
+  name: serviceB-service
+  description: >
+    serviceB service deployed locally in multiple namespaces 
+    (us-prod, eu-dev, asia-qa) with different versions.
+
   annotations:
-    github.com/project-slug: raunakkhatri/python-app
-    backstage.io/techdocs-ref: dir:.
+    # Matches all your deployed services:
+    backstage.io/kubernetes-label-selector: app=serviceB-service
+
+    backstage.io/techdocs-ref: dir:./docs
+
 spec:
   type: service
-  owner: development
-  lifecycle: experimental
+  lifecycle: production
+  owner: group:developer
+  system: serviceB-processing
+
+  providesApis:
+    - api:default/serviceB-api
+
+  dependsOn:
+    - resource:default/serviceB-db-us
+    - resource:default/serviceB-db-eu
+    - resource:default/serviceB-db-asia
