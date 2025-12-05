@@ -34,7 +34,7 @@ metadata:
   description: Simulated DB for US environment.
 spec:
   type: database
-  system: serviceB-processing
+  system: data-processing
   owner: group:developer
 ---
 apiVersion: backstage.io/v1alpha1
@@ -44,7 +44,7 @@ metadata:
   description: Simulated DB for EU environment.
 spec:
   type: database
-  system: serviceB-processing
+  system: data-processing
   owner: group:developer
 ---
 apiVersion: backstage.io/v1alpha1
@@ -54,7 +54,7 @@ metadata:
   description: Simulated DB for Asia environment.
 spec:
   type: database
-  system: serviceB-processing
+  system: data-processing
   owner: group:developer
 ---
 apiVersion: backstage.io/v1alpha1
@@ -75,7 +75,7 @@ spec:
   type: service
   lifecycle: production
   owner: group:developer
-  system: serviceB-processing
+  system: data-processing
 
   providesApis:
     - api:default/serviceB-api
