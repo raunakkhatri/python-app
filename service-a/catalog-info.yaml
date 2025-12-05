@@ -1,11 +1,11 @@
-apiVersion: backstage.io/v1alpha1
-kind: Domain
-metadata:
-  name: data-processing
-  description: Domain for data-processing services.
-spec:
-  owner: group:developer
----
+# apiVersion: backstage.io/v1alpha1
+# kind: Domain
+# metadata:
+#   name: data-processing
+#   description: Domain for data-processing services.
+# spec:
+#   owner: group:developer
+# ---
 apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
