@@ -66,6 +66,9 @@ metadata:
   annotations:
     backstage.io/kubernetes-label-selector: app=python-app-prod
     backstage.io/techdocs-ref: dir:./docs
+    
+    argocd/app-name: python-app-prod
+    argocd/instance-name: default
 
 spec:
   type: service
