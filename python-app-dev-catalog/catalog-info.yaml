@@ -47,6 +47,9 @@ metadata:
     backstage.io/kubernetes-label-selector: app=python-app-dev
     backstage.io/techdocs-ref: dir:./docs
 
+    argocd/app-name: python-app-dev
+    argocd/instance-name: default
+
 spec:
   type: service
   lifecycle: production
