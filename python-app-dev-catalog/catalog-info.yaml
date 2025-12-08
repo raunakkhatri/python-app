@@ -1,0 +1,60 @@
+# apiVersion: backstage.io/v1alpha1
+# kind: Domain
+# metadata:
+#   name: data-processing
+#   description: Domain for data-processing services.
+# spec:
+#   owner: group:developer
+# ---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: python-app-dev
+  description: Python application development environment.
+spec:
+  owner: group:developer
+  domain: data-processing
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: python-app-dev-api
+  description: API definition for Python App Development.
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:developer
+  definition:
+    $text: ./openapi.yaml
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: python-app-dev-db
+  description: Development database.
+spec:
+  type: database
+  system: python-app-dev
+  owner: group:developer
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: python-app-dev-service
+  description: Python application service for development environment.
+
+  annotations:
+    backstage.io/kubernetes-label-selector: app=python-app-dev
+    backstage.io/techdocs-ref: dir:./docs
+
+spec:
+  type: service
+  lifecycle: production
+  owner: group:developer
+  system: python-app-dev
+
+  providesApis:
+    - api:default/python-app-dev-api
+
+  dependsOn:
+    - resource:default/python-app-dev-db
