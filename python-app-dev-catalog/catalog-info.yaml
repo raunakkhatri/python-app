@@ -48,7 +48,7 @@ metadata:
     backstage.io/techdocs-ref: dir:./docs
 
     argocd/app-name: python-app-dev
-    argocd/instance-name: default
+    # argocd/instance-name: default
 
 spec:
   type: service
