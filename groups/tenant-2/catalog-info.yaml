@@ -6,3 +6,6 @@ metadata:
 spec:
   type: tenant
   owner: group:default/px-github
+  profile:
+    displayName: Tenant 1
+  children: []
