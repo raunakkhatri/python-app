@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: tenant-2
+  description: Tenant 2 runtime isolation boundary
+spec:
+  type: tenant
+  owner: group:default/px-github

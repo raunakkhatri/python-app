@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: worker-a
+  description: Worker A component
+spec:
+  type: worker
+  lifecycle: production
+  owner: group:default/px-github

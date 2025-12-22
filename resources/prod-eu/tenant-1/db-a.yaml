@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: db-a-prod-eu-tenant-1
+  description: Database A in prod-EU for tenant-1
+  annotations:
+    environment: prod-eu
+    app.kubernetes.io/version: "1.0.0"
+spec:
+  type: database
+  owner: group:default/px-github
+  dependsOn:
+    - component:service-a

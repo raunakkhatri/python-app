@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: service-a-deployment-prod-us-tenant-1
+  description: Service A deployment in prod-US for tenant-1
+  annotations:
+    environment: prod-us
+    app.kubernetes.io/version: "1.0.0"
+spec:
+  type: deployment
+  owner: group:default/px-github
+  dependsOn:
+    - component:service-a

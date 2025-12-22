@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: service-b-deployment-prod-eu-tenant-2
+  description: Service B deployment in prod-EU for tenant-2
+  annotations:
+    environment: prod-eu
+    app.kubernetes.io/version: "1.0.0"
+spec:
+  type: deployment
+  owner: group:default/px-github
+  dependsOn:
+    - component:service-b
