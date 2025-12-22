@@ -11,3 +11,5 @@ spec:
   owner: group:default/px-github
   dependsOn:
     - component:service-b
+    - resource:default/tenant-2
+    
