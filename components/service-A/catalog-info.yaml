@@ -6,5 +6,4 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  # owner: group:default/px-github
-  owner: unknown
+  owner: group:default/px-github
